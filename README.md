@@ -1,6 +1,6 @@
 [![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
-# rails-api-template
+# bad-millennial-server
 
 A template for starting projects with `rails-api`. Includes authentication.
 
@@ -28,9 +28,9 @@ version of Rails 4, as well as track `master` branches for `rails-api` and
 1.  Move into the new project and `git init`.
 1.  Install dependencies with `bundle install`.
 1.  Rename your app module in `config/application.rb` (change
-    `RailsApiTemplate`).
+    `BadMillenial`).
 1.  Rename your project database in `config/database.yml` (change
-    `'rails-api-template'`).
+    `'bad-millennial-server'`).
 1.  Make new `development` and `test` secrets for `config/secrets.yml`. Add and
     commit this file.
 1.  Setup your database with `bin/rake db:nuke_pave` or `bundle exec rake
