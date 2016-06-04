@@ -32,6 +32,8 @@ class DictionariesController < ApplicationController
   def update
     @dictionary = Dictionary.find(params[:id])
 
+
+
     if @dictionary.update(dictionary_params)
       head :no_content
     else
