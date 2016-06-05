@@ -1,5 +1,5 @@
 #
 class User < ActiveRecord::Base
   include Authentication
-  has_many :dictionaries, dependent: :destroy
+  has_many :words, dependent: :destroy
 end

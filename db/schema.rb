@@ -11,17 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160604190536) do
+ActiveRecord::Schema.define(version: 20160605163053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "dictionaries", force: :cascade do |t|
-    t.string   "word"
-    t.string   "definition"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "examples", force: :cascade do |t|
     t.text     "text",       null: false
@@ -43,5 +36,16 @@ ActiveRecord::Schema.define(version: 20160604190536) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["token"], name: "index_users_on_token", unique: true, using: :btree
 
+  create_table "words", force: :cascade do |t|
+    t.string   "entry"
+    t.string   "definition"
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "words", ["user_id"], name: "index_words_on_user_id", using: :btree
+
   add_foreign_key "examples", "users"
+  add_foreign_key "words", "users"
 end

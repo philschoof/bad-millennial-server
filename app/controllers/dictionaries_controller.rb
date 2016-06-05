@@ -1,10 +1,11 @@
-class DictionariesController < ApplicationController
+class DictionariesController < ProtectedController
   before_action :set_dictionary, only: [:show, :update, :destroy]
 
   # GET /dictionaries
   # GET /dictionaries.json
   def index
-    @dictionaries = Dictionary.all
+    binding.pry
+    @dictionaries = current_user.dictionaries.order("id DESC").all
 
     render json: @dictionaries
   end
@@ -32,10 +33,8 @@ class DictionariesController < ApplicationController
   def update
     @dictionary = Dictionary.find(params[:id])
 
-
-
     if @dictionary.update(dictionary_params)
-      head :no_content
+      render json: @dictionary
     else
       render json: @dictionary.errors, status: :unprocessable_entity
     end
@@ -51,11 +50,11 @@ class DictionariesController < ApplicationController
 
   private
 
-    def set_dictionary
-      @dictionary = Dictionary.find(params[:id])
-    end
+  def set_dictionary
+    @dictionary = current_user.dictionaries.find(params[:id])
+  end
 
-    def dictionary_params
-      params.require(:dictionary).permit(:word, :definition)
-    end
+  def dictionary_params
+    params.require(:dictionary).permit(:word, :definition)
+  end
 end
