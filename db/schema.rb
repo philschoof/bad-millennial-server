@@ -16,6 +16,13 @@ ActiveRecord::Schema.define(version: 20160605163053) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "dictionaries", force: :cascade do |t|
+    t.string   "word"
+    t.string   "definition"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "examples", force: :cascade do |t|
     t.text     "text",       null: false
     t.integer  "user_id",    null: false

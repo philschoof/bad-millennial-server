@@ -1,11 +1,11 @@
-class WordsController < OpenReadController
+class WordsController < ProtectedController
   before_action :set_word, only: [:show, :update, :destroy]
 
   # GET /words
   # GET /words.json
   def index
     # @words = current_user.words.order("id DESC").all
-    @words = Word.all
+    @words = current_user.words.order("id DESC").all
 
     render json: @words
   end
@@ -19,7 +19,7 @@ class WordsController < OpenReadController
   # POST /words
   # POST /words.json
   def create
-    @word = current_user.words.new(word_params.merge(user_id: params[:user_id]))
+    @word = current_user.words.build(word_params)
 
     if @word.save
       render json: @word, status: :created, location: @word
