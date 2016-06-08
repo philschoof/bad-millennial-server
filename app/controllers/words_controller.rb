@@ -5,7 +5,7 @@ class WordsController < ProtectedController
   # GET /words.json
   def index
     # @words = current_user.words.order("id DESC").all
-    @words = current_user.words.order("id DESC").all
+    @words = current_user.words.order("entry ASC").all
 
     render json: @words
   end
